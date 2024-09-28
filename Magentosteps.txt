@@ -1,0 +1,49 @@
+1.Download and Install Xampp
+
+
+2.Download and Install Elasticsearch run
+
+
+3.Download Magento 2 
+
+
+4. Move Magento 2 Folder and Elasticserach folder to xampp's htdocs folder.
+
+
+5.Elasticsearch Just for Check http://localhost:9200/
+
+
+6.  Edit Gd2.php file [\vendor\magento\framework\Image\Adapter]: Add " && !file_exists($filename)" part; Around 90 line
+
+
+7.  Edit di.xml file [\app\etc]: find and change word "Symlink" to "copy";
+
+
+8.  Edit Validator.php file [\vendor\magento\framework\View\Element\Template\File]
+
+
+9. Create Database
+
+
+10. php bin/magento setup:install --base-url="http://localhost/magento" --db-host="localhost" --db-name="dbmagento" --db-user="root" --db-password="" --admin-firstname="admin" --admin-lastname="admin" --admin-email="user@example.com" --admin-user="admin" --admin-password="admin123" --use-rewrites="1" --backend-frontname="admin"
+
+
+ ( Do not turn off elasticsearch / Install take too much time So Please Wait )
+
+
+11.php bin/magento indexer:reindex
+
+
+12.php bin/magento setup:upgrade
+
+
+13.php bin/magento setup:static-content:deploy -f
+
+
+14.php bin/magento cache:flush
+
+
+
+
+15.Fix Two Factor Auth login admin
+php bin/magento module:disable Magento_TwoFactorAuth
